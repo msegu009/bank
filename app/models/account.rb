@@ -1,0 +1,23 @@
+# encoding: utf-8
+class Account < ActiveRecord::Base
+  belongs_to :client
+  has_many :transactions, dependent: :destroy
+
+  validates :balance, numericality: { only_integer: true }
+
+  before_create :set_number
+
+  def to_s
+    "[#{number}] #{balance} zł"
+  end
+
+  def update_balance!
+    sum = transactions.map { |t| t.amount }.sum
+    update_attribute(:balance, sum)
+  end
+
+  protected
+    def set_number
+      self.number = rand 1_000_000_000
+    end
+end

@@ -1,0 +1,18 @@
+= content_for :client, @client
+
+%h1 Konta klienta
+
+%table.table
+  %tr
+    %th Numer
+    %th Saldo
+    %th
+    %th
+
+  = render @accounts
+
+%p=paginate @accounts
+
+%br
+
+= link_to 'Nowe konto', client_accounts_path(@client), class: 'btn', method: :post

@@ -1,0 +1,13 @@
+* Założenie konta w Shelly Cloud
+
+* Gemfile: gem 'shelly'
+
+* config.serve_static_assets = true
+
+* shelly login
+
+* shelly add
+
+* git push minibank-app-staging master
+
+* shelly start

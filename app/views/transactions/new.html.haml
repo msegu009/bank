@@ -1,0 +1,21 @@
+= content_for :client, @client
+
+%h1 Nowa transakcja
+%h2= @account
+
+= form_for [@account, @transaction] do |f|
+  - if @transaction.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@transaction.errors.count, "error")} prohibited this transaction from being saved:"
+      %ul
+        - @transaction.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :amount
+    = f.text_field :amount
+  .field
+    = f.label :descr
+    = f.text_field :descr
+  .actions
+    = f.submit 'Zapisz'

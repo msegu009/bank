@@ -1,0 +1,5 @@
+= content_for :client, @client
+
+%h1= @account
+
+%p= link_to 'Lista transakcji', account_transactions_path(@account), class: 'btn'
